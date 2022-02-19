@@ -1,2 +1,8 @@
 *.o
 obj/*.o
+bin/*
+test/*
+
+!obj/.gitkeep
+!test/.gitkeep
+!bin/.gitkeep
