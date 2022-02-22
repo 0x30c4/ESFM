@@ -30,8 +30,8 @@ bool checkIfFileExists(char *fileName){
      * return TRUE else FALSE.
      */ 
     if (access(fileName, F_OK | R_OK) == 0)
-        return TRUE;
+        return true;
     else
-        return FALSE; 
+        return false; 
 }
 
