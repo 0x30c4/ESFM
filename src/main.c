@@ -1,5 +1,6 @@
 #include<argp.h>
 #include<common.h>
+#include<file.h>
 
 #define SHELL 0x01
 #define PY2   0x02
@@ -11,15 +12,15 @@
 const char *argp_program_version = "ESFM 1.69";
 const char *argp_program_bug_address = "<sanaf@0x30c4.dev>";
 static char doc[] = "CLI tool for making executable files";
-static char args_doc[] = "[FILENAME]...";
+static char args_doc[] = "[FILENAME]";
 static struct argp_option options[] = { 
     { "custom",     'c',    "EXE_NAME", 0, "For custom interpreter"  },
-    { "sh",         SHELL,  0,          0, "For sh interpreter"      },
-    { "py3",        PY3,    0,          0, "For python3 interpreter" },
-    { "py2",        PY2,    0,          0, "For python2 interpreter" },
-    { "bash",       BASH,   0,          0, "For bash interpreter"    },
-    { "php",        PHP,    0,          0, "For php interpreter"     },
-    { "prel",       PERL,   0,          0, "For prel interpreter"    },
+    { "sh",         SHELL,  "FILE",     0, "For sh interpreter"      },
+    { "py3",        PY3,    "FILE",     0, "For python3 interpreter" },
+    { "py2",        PY2,    "FILE",     0, "For python2 interpreter" },
+    { "bash",       BASH,   "FILE",     0, "For bash interpreter"    },
+    { "php",        PHP,    "FILE",     0, "For php interpreter"     },
+    { "prel",       PERL,   "FILE",     0, "For prel interpreter"    },
     { 0 } 
 };
 
@@ -29,9 +30,14 @@ struct arguments {
 
 static error_t parse_opt(int key, char *arg, struct argp_state *state) {
     struct arguments *arguments = state->input;
+
+    if (state->argc == 1)
+        argp_error(state, "Not enough arguments or options!!"); 
+
     switch (key) {
         case 'c': 
             arguments->exe = arg;
+            printf("-> %s\n", state->argv[state->next]);
             break;
         case SHELL:
             arguments->exe = "sh";
@@ -52,18 +58,16 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state) {
             arguments->exe = "perl";
             break;
         case ARGP_KEY_ARG: 
+            /* printf("%s\n", arg); */
             if (state->arg_num >= 1)
                 /* Too many arguments. */
                 argp_error(state, "Too many arguments!!");
             break;
-        case ARGP_KEY_END:
-            if (state->arg_num < 1)
-                /* Not enough arguments. */
-                argp_error(state, "Not enough arguments!!");
-            break;
-        default: return ARGP_ERR_UNKNOWN;
+        /* case ARGP_KEY_END: */
+            /* break; */
+        default:
+            return ARGP_ERR_UNKNOWN;
     }
-    printf("%s\n", state->arg);
     return 0;
 }
 
@@ -73,9 +77,13 @@ int main(int argc, char *argv[]){
 
     struct arguments arguments;
 
+    arguments.exe = NULL;
+
     argp_parse(&argp, argc, argv, 0, 0, &arguments);
 
-    printf("ARG1 = %s\n", arguments.exe);
+    /* printf("ARG1 = %s\n", arguments.exe); */
+
+    create_file("test/test.py", "python3");
 
 	return 0;
 }

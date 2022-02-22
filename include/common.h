@@ -6,5 +6,7 @@
 #include <unistd.h>
 #include <argp.h>
 #include <stdbool.h>
+#include <string.h>
+#include <fcntl.h>
 
 #endif

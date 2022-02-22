@@ -29,8 +29,8 @@ all: esfm
 %.o: $(SRC)/%.c
 	$(CC) $(STD) $(CFLAGS) -I$(INCLUDE) $^ -o $(OBJ)/$@
 
-esfm: main.o error.o 
-	$(CC) $(OBJ)/main.o  $(OBJ)/error.o -o $(BIN)/$(EXE)
+esfm: main.o file.o error.o 
+	$(CC) $(OBJ)/main.o $(OBJ)/file.o $(OBJ)/error.o -o $(BIN)/$(EXE)
 
 # Cleans only the .o files for a clean build 
 clean_obj: 
