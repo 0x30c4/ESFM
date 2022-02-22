@@ -13,7 +13,7 @@ bool create_file(char *file_name, char *exe_name){
 	printf("%s | %ld\n", str, str_len);
 
 	for (int i = 0; i < str_len; i++)
-		write(1, str, 1);
+		write(1, '1', 1);
 	/* write(fd, str, str_len); */
 	close(fd);
 
