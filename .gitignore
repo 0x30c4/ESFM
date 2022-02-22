@@ -1,6 +1,6 @@
 *.o
 obj/*.o
-bin/*
+bin/mkex
 test/*
 
 !obj/.gitkeep
