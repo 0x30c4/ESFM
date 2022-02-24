@@ -74,6 +74,12 @@ void create_or_update(char *file_name, char *exe_name){
 
             remove(tmp_file);
 
+            char mode[] = "0755";
+            int i;
+            i = strtol(mode, 0, 8);
+            if (chmod(file_name, i) < 0){
+                fprintf(stderr, "Error: can not change file permission!\n");
+            }
         }else{
             fprintf(stderr, "Couldn't Update %s\n", file_name);
         }
@@ -92,8 +98,6 @@ void create_file(char *file_name, char *exe_name){
 
 	char str[32];
 
-
-    printf("asdasd");
 	sprintf(str, "#!/usr/bin/env %s\n", exe_name);
 
 	for (int i = 0; str[i] != '\0'; i++)

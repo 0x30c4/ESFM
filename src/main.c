@@ -80,11 +80,5 @@ int main(int argc, char *argv[]){
 
     argp_parse(&argp, argc, argv, 0, 0, &arguments);
 
-    /* printf("ARG1 = %s\n", arguments.exe); */
-
-    /* create_file("test/test.py", "python3"); */
-
-    /* append_to_file("test/test.py", "test/test.py.tmp_filejlkncnvd"); */
-
 	return 0;
 }

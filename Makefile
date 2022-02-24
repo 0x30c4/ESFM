@@ -32,6 +32,11 @@ all: esfm
 esfm: main.o file.o error.o 
 	$(CC) $(OBJ)/main.o $(OBJ)/file.o $(OBJ)/error.o -o $(BIN)/$(EXE)
 
+# Install the program
+
+install: 
+	cp bin/$(EXE) /usr/bin/
+
 # Cleans only the .o files for a clean build 
 clean_obj: 
 	rm -fr *.o
