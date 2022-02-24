@@ -3,9 +3,4 @@
 
 #include "common.h"
 
-void useage(char **);
-void tooManyArg(int *, char **);
-void tooFewArg(char **);
-bool checkIfFileExists(char *);
-
 #endif

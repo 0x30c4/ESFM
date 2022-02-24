@@ -36,26 +36,25 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state) {
 
     switch (key) {
         case 'c': 
-            arguments->exe = arg;
             printf("-> %s\n", state->argv[state->next]);
             break;
         case SHELL:
-            arguments->exe = "sh";
-            break;
-        case PY2:
-            arguments->exe = "python3";
+            create_or_update(arg, "sh");
             break;
         case PY3:
-            arguments->exe = "python2";
+            create_or_update(arg, "python3");
+            break;
+        case PY2:
+            create_or_update(arg, "python2");
             break;
         case BASH:
-            arguments->exe = "bash";
+            create_or_update(arg, "bash");
             break;
         case PHP:
-            arguments->exe = "php";
+            create_or_update(arg, "php");
             break;
         case PERL:
-            arguments->exe = "perl";
+            create_or_update(arg, "perl");
             break;
         case ARGP_KEY_ARG: 
             /* printf("%s\n", arg); */
@@ -83,7 +82,9 @@ int main(int argc, char *argv[]){
 
     /* printf("ARG1 = %s\n", arguments.exe); */
 
-    create_file("test/test.py", "python3");
+    /* create_file("test/test.py", "python3"); */
+
+    /* append_to_file("test/test.py", "test/test.py.tmp_filejlkncnvd"); */
 
 	return 0;
 }

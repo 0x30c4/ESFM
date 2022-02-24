@@ -3,6 +3,10 @@
 
 #include "common.h"
 
-bool create_file(char *, char *);
+int copy(const char *, const char *);
+void append_to_file(char [], char []);
+void create_file(char *, char *);
+void create_or_update(char *, char *);
+bool checkIfFileExists(char *);
 
 #endif
