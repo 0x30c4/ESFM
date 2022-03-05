@@ -1,7 +1,7 @@
 # What is ESFM ?
 <br>
 When you are doing work and you need to create an executable bash/python/prel script, you have to
-create a file and then add ```#!/usr/bin...``` line at the bigging of the file and change file 
+create a file and then add #!/usr/bin... line at the bigging of the file and change file 
 permission to executable. Which is repetitive and waste of time. 
 
 <b>
@@ -13,11 +13,10 @@ So, to solve this problem here comes ESFM (Executable Script File Maker) to help
 ```bash
 $ mkex --py3 main.py
 
-$ ls -la main.py
+$ ls -l main.py
 -rwxr-xr-x 1 zcool zcool 0 Feb 24 19:09 main.py
 
 $ cat main.py
-
 #!/usr/bin/env python3
 
 ```
@@ -32,7 +31,7 @@ print("Hello world!")
 
 $ mkex --py3 main.py 
 
-$ ls -la main.py
+$ ls -l main.py
 -rwxr-xr-x 1 zcool zcool 100 Feb 24 19:09 main.py
 
 $ cat main.py
@@ -40,8 +39,6 @@ $ cat main.py
 print("Hello world!")
 
 ```
-
-
 
 ### Usage
 ```bash
