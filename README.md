@@ -10,9 +10,42 @@ So, to solve this problem here comes ESFM (Executable Script File Maker) to help
 
 # How to use it.
 
-
 ```bash
-~/ $ mkex
+$ mkex --py3 main.py
+
+$ ls -la main.py
+-rwxr-xr-x 1 zcool zcool 0 Feb 24 19:09 main.py
+
+$ cat main.py
+
+#!/usr/bin/env python3
+
+```
+
+### If the file already exists then use it to make it a executable script
+```bash
+$ ls -la main.py
+-rw-r--r-- 1 zcool zcool 69 Feb 24 19:09 main.py
+
+$ cat main.py
+print("Hello world!")
+
+$ mkex --py3 main.py 
+
+$ ls -la main.py
+-rwxr-xr-x 1 zcool zcool 100 Feb 24 19:09 main.py
+
+$ cat main.py
+#!/usr/bin/env python3
+print("Hello world!")
+
+```
+
+
+
+### Usage
+```bash
+~/ $ mkex --help
 
 Usage: mkex [OPTION...] [FILENAME]
 CLI tool for making executable files
