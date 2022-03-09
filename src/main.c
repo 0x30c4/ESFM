@@ -36,7 +36,7 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state) {
 
     switch (key) {
         case 'c': 
-            printf("-> %s\n", state->argv[state->next]);
+            create_or_update(state->argv[state->next], arg);
             break;
         case SHELL:
             create_or_update(arg, "sh");
