@@ -24,18 +24,15 @@ static struct argp_option options[] = {
     { 0 } 
 };
 
-struct arguments {
-    char *exe;
-};
-
 static error_t parse_opt(int key, char *arg, struct argp_state *state) {
-    struct arguments *arguments = state->input;
+    /* struct arguments *arguments = state->input; */
 
     if (state->argc == 1)
         argp_error(state, "Not enough arguments or options!!"); 
 
     switch (key) {
         case 'c': 
+            // Putting the parameter of -c as interpreter argument and file as file.
             create_or_update(state->argv[state->next], arg);
             break;
         case SHELL:
@@ -57,13 +54,10 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state) {
             create_or_update(arg, "perl");
             break;
         case ARGP_KEY_ARG: 
-            /* printf("%s\n", arg); */
             if (state->arg_num >= 1)
                 /* Too many arguments. */
                 argp_error(state, "Too many arguments!!");
             break;
-        /* case ARGP_KEY_END: */
-            /* break; */
         default:
             return ARGP_ERR_UNKNOWN;
     }
@@ -74,11 +68,7 @@ static struct argp argp = { options, parse_opt, args_doc, doc, 0, 0, 0 };
 
 int main(int argc, char *argv[]){
 
-    struct arguments arguments;
-
-    arguments.exe = NULL;
-
-    argp_parse(&argp, argc, argv, 0, 0, &arguments);
+    argp_parse(&argp, argc, argv, 0, 0, NULL);
 
 	return 0;
 }

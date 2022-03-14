@@ -7,6 +7,6 @@ int copy(const char *, const char *);
 void append_to_file(char [], char []);
 void create_file(char *, char *);
 void create_or_update(char *, char *);
-bool checkIfFileExists(char *);
+bool check_if_file_exists(char *);
 
 #endif
