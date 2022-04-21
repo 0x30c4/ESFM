@@ -1,4 +1,3 @@
-
 # Makefile for the maze game.
 
 CC=gcc
